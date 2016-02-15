@@ -14,7 +14,7 @@ def sync_hours_for_date(password, date_str):
     print "Syncing %d/%d/%d (%s)" % (in_date.tm_mday, in_date.tm_mon, in_date.tm_year, doy)
 
     h = Harvest(HARVEST_URL_ROOT, HARVEST_USER_EMAIL, password)
-    rm = redmine.Redmine(REDMINE_URL_ROOT, key=REDMINE_API_KEY
+    rm = redmine.Redmine(REDMINE_URL_ROOT, key=REDMINE_API_KEY)
     rm_date = date(*in_date[:3])
     rm_users = rm.users
     rm_user = rm_users[6]
