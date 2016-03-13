@@ -6,6 +6,10 @@ from datetime import date
 import redmine
 from local_settings import HARVEST_URL_ROOT, HARVEST_USER_EMAIL, REDMINE_URL_ROOT, REDMINE_API_KEY, CLIENT_NAME
 
+try:
+    from local_settings import HARVEST_PASSWORD
+except ImportError:
+    HARVEST_PASSWORD = None
 
 def sync_hours_for_date(password, date_str):
     in_date = strptime(date_str, '%d/%m/%Y')
@@ -80,7 +84,7 @@ def sync_hours_for_date(password, date_str):
 
 
 def main():
-    password = getpass()
+    password = HARVEST_PASSWORD or getpass()
 
     if argv[1].count('/') == 1:
         for i in xrange(1, 32):
